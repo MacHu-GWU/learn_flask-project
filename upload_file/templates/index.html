@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flask Form Test</title>
+
+
+</head>
+<body>
+<!-- enctype="multipart/form-data" is very important-->
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+	<div>
+		<input type="file" name="csv_data" accept=".csv">
+	</div>
+
+	<div>
+		<input type="submit" value="Submit">
+	</div>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Flask Form Test</title>
+
+
+</head>
+<body>
+
+<!--
+
+- int
+- float
+- string
+- date
+- list of int/string (options)
+- list as string
+
+-->
+
+<form action="/" method="POST">
+
+	<div>
+		<table border="1" style="color:#1519F9">
+
+			<tr>
+				<td>
+					<strong>String Type:</strong>
+				</td>
+				<td>
+					<input type="text" name="string_type" class="input-string_type" value="{{string_type}}" style="width:600px;" placeholder=" e.g. Hello World!"/><input type="button" class="reset-button" value="Reset" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<strong>Integer Type:</strong>
+				</td>
+				<td>
+					<input type="number" name="integer_type" class="input-integer_type" value="{{integer_type}}" step="1" style="width:600px;" placeholder=" e.g. 1"/><input type="button" class="reset-button" value="Reset" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<strong>Float Type:</strong>
+				</td>
+				<td>
+					<input type="number" name="float_type" class="input-float_type" value="{{float_type}}" step="0.000001" style="width:600px;" placeholder=" e.g. 3.14"/><input type="button" class="reset-button" value="Reset" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<strong>Multiple Choice:</strong>
+				</td>
+				<td>
+					<select multiple name="multiple_choice" class="chosen-select" data-placeholder="choose some fruit, e.g. Apple, Banana ..." style="width:605px;" tabindex="2">
+						{% for choice in multiple_choice_options %}
+							{% if choice in multiple_choice %}
+								<option value="{{choice}}" selected>{{choice}}</option>
+							{% else %}
+								<option value="{{choice}}">{{choice}}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<strong>Date Type:</strong>
+				</td>
+				<td>
+					<input type="date" name="date_type" class="input-date_type" value="{{date_type}}" style="width:600px;" placeholder=" e.g. 2000-01-01"/><input type="button" class="reset-button" value="Reset" />
+				</td>
+			</tr>
+
+		</table>
+	</div>
+
+	<div>
+		<input type="submit" value="Submit" style="width:300px">
+		
+	</div>
+</form>
+<a href="/">
+	<button style="width:300px">Reset Everything</button>
+</a>
+
+<!-- Script -->
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Reset Button -->
+<script type="text/javascript">
+	function resetForm(){
+		$(this.previousSibling).val(function(){
+	  	return ""; // this.defaultValue;
+	  });
+	}
+</script>
+
+<!-- clipboard -->
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+<script type="text/javascript">
+	var clipboard = new Clipboard('.btn');
+	clipboard.on('success', function(e) {
+	    console.log(e);
+	});
+	clipboard.on('error', function(e) {
+	    console.log(e);
+	});
+</script>
+
+<!-- chosen -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.js"></script>
+<script type="text/javascript">
+	$(".chosen-select").chosen({no_results_text: "No Matching Genres!", max_selected_options: 5, search_contains: true}); 
+</script>
+
+<!-- datepicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(document).ready( function() {
+	  	$(function() {
+	    	$("#create_time").datepicker( {
+	    		changeMonth : true,
+	    		changeYear : true,
+	    		firstDay: 1
+	    	} );
+	  	});
+	});
+</script>
+
+</body>
+</html>
