@@ -1,0 +1,24 @@
+<form method="POST" action="/submit">
+    {{ form.csrf_token }}
+    <p>
+        {{ form.int_field.label }} {{ form.int_field(size=20, type="number", step="1") }}
+    </p>
+    <p>
+        {{ form.str_field.label }} {{ form.str_field(size=20) }}
+    </p>
+    <p>
+        {{ form.date_field.label }} {{ form.date_field(size=20, type="date") }}
+    </p>
+    <p>
+        {{ form.textarea_field.label }} {{ form.textarea_field(size=20) }}
+    </p>
+    <p>
+        {{ form.ratio_field.label }} {{ form.ratio_field() }}
+    </p>
+    <p>
+        {{ form.multi_select.label }} {{ form.multi_select() }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
